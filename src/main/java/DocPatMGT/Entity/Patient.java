@@ -1,6 +1,8 @@
 package DocPatMGT.Entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -8,6 +10,8 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Patient {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,4 +29,29 @@ public class Patient {
     @OneToOne
     @JoinColumn(name = "user_id")
     private User user;
+
+    public Patient(String firstName, String lastName, String gender, String age, String mobile, String userPhoto, String origin, User user) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.gender = gender;
+        this.age = age;
+        this.mobile = mobile;
+        this.userPhoto = userPhoto;
+        this.origin = origin;
+        this.user = user;
+    }
+
+    public Patient(String firstName, String lastName, String gender, String age, String mobile, String userPhoto, String origin, String email, String encode, String username) {
+
+
+
+
+
+
+
+
+
+
+
+    }
 }
