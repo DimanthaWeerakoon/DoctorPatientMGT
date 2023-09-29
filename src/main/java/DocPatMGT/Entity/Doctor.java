@@ -11,7 +11,6 @@ import javax.persistence.*;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 public class Doctor {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,4 +31,7 @@ public class Doctor {
     @OneToOne
     @JoinColumn(name = "user_id")
     private User user;
+
+
+
 }

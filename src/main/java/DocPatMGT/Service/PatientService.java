@@ -10,9 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Service
 public class PatientService {
-
     private final UserRepository userRepository;
     private final PatientRepository patientRepository;
     private final RoleRepository roleRepository;
@@ -25,12 +27,14 @@ public class PatientService {
     }
 
     @Transactional
-    public void saveUser(User user, Patient patient, String roleName){
+    public void saveUser(User user, Patient patient, String roleName) {
         Role role = roleRepository.findByName(roleName);
-        if (role != null){
-            user.getRoles().add(role);
+        Set<Role> userRoles = new HashSet<>();
+        userRoles.add(role);
+        if (role != null) {
             userRepository.save(user);
+            patient.setUser(user);
+            patientRepository.save(patient);
         }
-        patientRepository.save(patient);
     }
 }

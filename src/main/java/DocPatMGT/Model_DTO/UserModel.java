@@ -1,6 +1,5 @@
 package DocPatMGT.Model_DTO;
 
-import DocPatMGT.Entity.User;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,7 +7,12 @@ import lombok.Setter;
 @Setter
 public class UserModel {
 
-    private User user;
+    private String email;
+    private String username;
+    private String password;
+    private String firstName;
+    private String lastName;
+    private String mobile;
     private PatientModel patientModel;
     private DoctorModel doctorModel;
     private String role;

@@ -1,12 +1,15 @@
 package DocPatMGT.Model_DTO;
 
-import DocPatMGT.Entity.Patient;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
+@NoArgsConstructor
 public class PatientModel {
 
-    private Patient patient;
+    private String gender;
+    private String age;
+    private String origin;
 }

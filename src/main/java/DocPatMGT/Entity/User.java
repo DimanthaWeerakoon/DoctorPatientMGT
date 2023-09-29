@@ -6,10 +6,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
+
 
 @Entity
 @Getter
@@ -22,20 +21,27 @@ public class User {
     @Id
     private Long id;
 
-    @Column(nullable=false, unique=true)
+    @Column(nullable=false)
     private String email;
-    @Column(nullable=false, unique = true)
+    @Column(nullable=false)
     private String username;
     @Column(nullable=false)
     private String password;
+    @Column(nullable=false)
+    private String firstName;
+    @Column(nullable=false)
+    private String lastName;
+    @Column(nullable=false)
+    private String mobile;
     private boolean enabled;
     private String role;
 
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
-    private Doctor doctor;
+//    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+//    private Doctor doctor;
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private Patient patient;
+
 
     @ManyToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
     @JoinTable(
@@ -44,9 +50,4 @@ public class User {
             inverseJoinColumns={@JoinColumn(name="role_id")})
     private Set<Role> roles = new HashSet<>();
 
-    public User(String email, String username, String password) {
-        this.email = email;
-        this.username = username;
-        this.password = password;
-    }
 }
