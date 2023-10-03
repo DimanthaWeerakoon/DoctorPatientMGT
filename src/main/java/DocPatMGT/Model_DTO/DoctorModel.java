@@ -10,9 +10,9 @@ import lombok.Setter;
 @NoArgsConstructor
 public class DoctorModel {
 
-    private String firstName;
-    private String lastName;
-    private String mobile;
+//    private String firstName;
+//    private String lastName;
+//    private String mobile;
     private String position;
     private String specializedArea;
     private String language;

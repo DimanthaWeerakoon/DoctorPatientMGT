@@ -7,7 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class PatientModel {
+public class PatientModel{
 
     private String gender;
     private String age;

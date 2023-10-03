@@ -29,12 +29,11 @@ public class PatientService {
     @Transactional
     public void saveUser(User user, Patient patient, String roleName) {
         Role role = roleRepository.findByName(roleName);
-        Set<Role> userRoles = new HashSet<>();
-        userRoles.add(role);
-        if (role != null) {
+        if (role != null){
             userRepository.save(user);
-            patient.setUser(user);
+            user.getRoles().add(role);
             patientRepository.save(patient);
         }
+
     }
 }

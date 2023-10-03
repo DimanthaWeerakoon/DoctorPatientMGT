@@ -16,9 +16,6 @@ public class Doctor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Long id;
-    private String firstName;
-    private String lastName;
-    private String mobile;
     private String position;
     private String specializedArea;
     private String doctorPhoto;
@@ -31,7 +28,5 @@ public class Doctor {
     @OneToOne
     @JoinColumn(name = "user_id")
     private User user;
-
-
 
 }
