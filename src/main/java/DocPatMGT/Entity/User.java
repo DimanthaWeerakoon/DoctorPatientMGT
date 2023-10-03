@@ -25,8 +25,6 @@ public class User {
     private Long id;
 
     @Column(nullable=false, unique = true)
-    @NotBlank(message = "Email is required")
-    @Email(message = "Invalid email format")
     private String email;
     @Column(nullable=false)
     private String username;

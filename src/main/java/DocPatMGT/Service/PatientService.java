@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.management.relation.RoleNotFoundException;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -27,13 +28,16 @@ public class PatientService {
     }
 
     @Transactional
-    public void saveUser(User user, Patient patient, String roleName) {
+    public void saveUser(User user, Patient patient, String roleName) throws RoleNotFoundException {
         Role role = roleRepository.findByName(roleName);
-        if (role != null){
+
+        if (role == null) {
+            throw new RoleNotFoundException("Role not found: " + roleName);
+        }
             userRepository.save(user);
             user.getRoles().add(role);
             patientRepository.save(patient);
-        }
+
 
     }
 }
